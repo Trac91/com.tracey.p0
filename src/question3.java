@@ -1,12 +1,13 @@
 import javax.swing.*;
 
 public class question3 {
+
+
     public static void main(String args[]) {
         // Declare Variables
 
         String name, taxableIncomeAsString;
-        float taxableIncome, taxDue, netIncome, gross, taxRate;
-
+        float taxableIncome, taxDue, netIncome, taxRate;
 
         // Prompt user for input
 
@@ -15,7 +16,6 @@ public class question3 {
         taxableIncomeAsString = JOptionPane.showInputDialog("Taxable Income: ");
 
         // Parse String to a float
-
         taxableIncome = Float.parseFloat(taxableIncomeAsString);
 
         // User Defined method to establish tax rate
@@ -28,29 +28,27 @@ public class question3 {
 
         netIncome = getNetIncome();
 
-
         // Display Message Box
-        JOptionPane.showMessageDialog(null, "Taxable Income",taxableIncome, "Name" + name, "Tax Rate", taxRate + "Tax due", taxDue, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Taxable Income",taxableIncome + "\nName", name + "\nTax Rate", taxRate + "\nTax due", taxDue + "\nNet Income", netIncome,"Information",JOptionPane.INFORMATION_MESSAGE);
 
-
+        System.exit(0);
     }
         // User defined method to establish the rate of tax to be used in calculations
     	
-    	public static float getTaxRate(float taxableIncome) {
+    	public static float getTaxRate(float Income) {
         
-        float taxRate,taxableIncome;
+        float taxRate, Income;
         
-        if (taxableIncome <= 20000.00);
+        if (Income <= 20000.00);
         {
             taxRate = 0;
         }
 
-        else if
-            (taxableIncome > 20000.00 || taxableIncome <= 36000.00);
-        {
-            taxRate = 20;
-            
-        }
+        if((Income > 20000.00) || (Income <= 36000.00))
+            {
+                taxRate = 20;
+
+            }
 
         else
             {
@@ -64,11 +62,11 @@ public class question3 {
 
         float taxDue;
 
-        if (taxRate==0);
+        if (taxRate==0)
         {
             taxDue = ((taxableIncome/100)*0);
         }
-        else if (taxRate==20);
+        else if (taxRate==20)
         {
             taxDue = ((taxableIncome/100)*20);
         }
@@ -86,15 +84,14 @@ public class question3 {
     public static float getNetIncome(float taxDue, float taxableIncome){
 
         float taxDue;
-        float taxableIncome;
+        float taxableIncome ;
+        float netIncome = (taxableIncome-taxDue);
 
-        netIncome = (taxableIncome-taxDue);
-
+        return netIncome;
     }
-     return netIncome;
+
 
 
     
 
 }
-//"\nTax Due: " + "\nGross Income: " + "\nTax Rate: ","Tax Calculations"
