@@ -7,7 +7,7 @@ public class question3 {
         // Declare Variables
 
         String name, taxableIncomeAsString;
-        float taxableIncome, taxDue, netIncome, taxRate;
+        float taxableIncome, taxDue=0, netIncome, taxRate;
 
         // Prompt user for input
 
@@ -19,17 +19,18 @@ public class question3 {
         taxableIncome = Float.parseFloat(taxableIncomeAsString);
 
         // User Defined method to establish tax rate
-        taxRate = getTaxRate();
+        taxRate = getTaxRate(taxableIncome);
 
         // User Defined method to calculate tax due
-        taxDue = getTaxDue();
+        taxDue = getTaxDue(taxableIncome,taxRate,taxDue);
 
         // User Defined method to calculate gross
 
-        netIncome = getNetIncome();
+        netIncome = getNetIncome(taxDue,taxableIncome);
 
         // Display Message Box
-        JOptionPane.showMessageDialog(null, "Taxable Income",taxableIncome + "\nName", name + "\nTax Rate", taxRate + "\nTax due", taxDue + "\nNet Income", netIncome,"Information",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Taxable Income: " + taxableIncome + "\nName: " + name + "\nTax Rate: " + taxRate + "\nTax due: "+ taxDue +
+                "\nNet Income: " + netIncome,"Information",JOptionPane.INFORMATION_MESSAGE);
 
         System.exit(0);
     }
@@ -37,57 +38,55 @@ public class question3 {
     	
     	public static float getTaxRate(float Income) {
         
-        float taxRate, Income;
+        float Rate;
         
         if (Income <= 20000.00);
         {
-            taxRate = 0;
+            Rate = 0;
         }
 
         if((Income > 20000.00) || (Income <= 36000.00))
             {
-                taxRate = 20;
+                Rate = 20;
 
             }
 
         else
             {
-                taxRate = 41;
+                Rate = 41;
 
             }
-		return taxRate;
+		return Rate;
     }
     
-    public static float getTaxDue(float taxDue, float taxRate, float taxableIncome) {
+    public static float getTaxDue(float tax, float Rate, float taxableIncome) {
 
-        float taxDue;
 
-        if (taxRate==0)
+        if (Rate==0)
         {
-            taxDue = ((taxableIncome/100)*0);
+            tax = ((taxableIncome/100)*0f);
         }
-        else if (taxRate==20)
+        else if (Rate==20)
         {
-            taxDue = ((taxableIncome/100)*20);
+            tax = ((taxableIncome/100)*20f);
         }
         else
         {
-            taxDue = ((taxableIncome/100)*40);
+            tax = ((taxableIncome/100)*41f);
         }
 
-        return taxDue;
+        return tax;
 
 
 
     }
 
-    public static float getNetIncome(float taxDue, float taxableIncome){
+    public static float getNetIncome(float tax, float Income){
 
-        float taxDue;
-        float taxableIncome ;
-        float netIncome = (taxableIncome-taxDue);
 
-        return netIncome;
+      Income = (Income-tax);
+
+        return Income;
     }
 
 
